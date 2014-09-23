@@ -55,22 +55,40 @@ if(array_key_exists('authcate', $_SESSION)) {
 
 		<div class="limiter">
 			<h1>Client page</h1>
+			<h3>Edit clients here</h3>
+			<br />
 			<?php
-
-			function createRow($data) {
-				$str = '<span class="row">'.$data['name'].'</span>';
-				return $str;
-			}
 			
 			$arr = array();
 			array_push($arr, array(
     		"name"     => "shash7",
     		"password" => "zzz",
 			));
+			array_push($arr, array(
+    		"name"     => "minki",
+    		"password" => "zzz",
+			));
+			array_push($arr, array(
+    		"name"     => "haxor",
+    		"password" => "zzz",
+			));
 
-			$str = array_map('createRow', $arr);
-
-			print_r($str);
+			$str = '';
+			for($i = 0, $len = sizeof($arr); $i < $len; $i++) {
+				$str .= '<tr><td class="table-item">'.$arr[$i]['name'].'</td>';
+				$str .= '<td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger">Delete</button></td></tr>';
+			}
+			echo '<table class="table">
+			<thead>
+				<tr>
+					<th>
+					Client name
+					</th>
+				</tr>
+			</thead>
+			<tbody>';
+			echo $str;
+			echo '</tbody></table>';
 
 			?>
 		</div>
