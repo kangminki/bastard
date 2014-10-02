@@ -19,7 +19,7 @@
             <label>Client ID</label><input type="text" class="form-control" placeholder="Enter client ID" name="client_id">
           </div>
           <div class="form-group">
-            <label>Family Name</label><input type="text" class="form-control" placeholder="Enter your family name" name="client_familyname">
+            <label>Family Name</label><input type="text" class="form-control" placeholder="Enter your family name" name="client_surname">
           </div>
           <div class="form-group">
             <label>Given Name</label><input type="text" class="form-control" placeholder="Enter your given name" name="client_givenname">
@@ -69,8 +69,7 @@
     {
       include("connection.php");
       $conn = oci_connect($UName,$PWord,$DB) or die("Couldn't logon.");
-      $query = "INSERT INTO client (client_id, client_surname, client_givenname, client_street, client_suburb, client_state, client_pc, client_email, client_phone, client_mobile, client_mailinglist) VALUES
-        (cust_no_seq.nextval,'".$_POST["client_id"]."','".$_POST["client_surname"]."','".$_POST["client_givenname"]."','".$_POST["client_street"]."','".$_POST["client_suburb"]."','".$_POST["client_state"]."','".$_POST["client_pc"]."','".$_POST["client_email"]."','".$_POST["client_phone"]."','".$_POST["client_mobile"]."','".$_POST["client_mailinglist"]."')";
+      $query = "INSERT INTO client (client_id, client_surname, client_givenname, client_street, client_suburb, client_state, client_pc, client_email, client_phone, client_mobile, client_mailinglist) VALUES (cust_no_seq.nextval,'".$_POST["client_id"]."','".$_POST["client_surname"]."','".$_POST["client_givenname"]."','".$_POST["client_street"]."','".$_POST["client_suburb"]."','".$_POST["client_state"]."','".$_POST["client_pc"]."','".$_POST["client_email"]."','".$_POST["client_phone"]."','".$_POST["client_mobile"]."','".$_POST["client_mailinglist"]."')";
         
       $stmt = oci_parse($conn,$query);
       oci_execute($stmt);

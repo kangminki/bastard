@@ -62,6 +62,14 @@
             var data = getFormContents(this);
             data.client_state = client_state;
             console.log(data);
+            $.ajax({
+                data : data,
+                type : 'POST',
+                url : 'add-client.php',
+                success : function(e) {
+                    console.log('success');
+                }
+            });
             e.preventDefault();
         });
 	}
